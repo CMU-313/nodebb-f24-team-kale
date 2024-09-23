@@ -49,5 +49,23 @@ module.exports = function () {
 	setupApiRoute(router, 'delete', '/:tid/read', [...middlewares, middleware.assert.topic], controllers.write.topics.markUnread);
 	setupApiRoute(router, 'put', '/:tid/bump', [...middlewares, middleware.assert.topic], controllers.write.topics.bump);
 
+	setupApiRoute(router, 'put', '/:tid/resolved', [...middlewares], async (req, res) => {
+		try {
+			const { tid } = req.params;
+			const { resolved } = req.body;
+
+			if (typeof resolved === 'boolean') {
+				await topics.setTopicField(tid, 'resolved', resolved);
+
+				res.json({ message: `Topic ${resolved ? 'resolved' : 'unresolved'} successfully` });
+			} else {
+				res.status(400).json({ message: 'Invalid resolved status' });
+			}
+		} catch (error) {
+			console.error('Error updating topic resolved status:', error);
+			res.status(500).json({ message: 'Error updating resolved status' });
+		}
+	});
+
 	return router;
 };

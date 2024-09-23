@@ -14,6 +14,8 @@ const authRoutes = require('./authentication');
 const writeRoutes = require('./write');
 const helpers = require('./helpers');
 
+const topicsRoutes = require('./write/topics');
+
 const { setupPageRoute } = helpers;
 
 const _mounts = {
@@ -106,6 +108,8 @@ module.exports = async function (app, middleware) {
 	router.render = function (...args) {
 		app.render(...args);
 	};
+
+	app.use('/', topicsRoutes);
 
 	// Allow plugins/themes to mount some routes elsewhere
 	const remountable = ['admin', 'categories', 'category', 'topic', 'post', 'users', 'user', 'groups', 'tags'];

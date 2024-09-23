@@ -74,6 +74,60 @@ define('forum/topic', [
 
 		handleTopicSearch();
 
+		const resolveButton = document.getElementById('btn-mark-resolved');
+		const unresolvedButton = document.getElementById('btn-mark-unresolved');
+		let tid = ajaxify.data.tid;
+
+		if (resolveButton && unresolvedButton) {
+			if (ajaxify.data.resolved) {
+				resolveButton.style.display = 'none';
+				unresolvedButton.style.display = 'inline-block';
+			} else {
+				unresolvedButton.style.display = 'none';
+				resolveButton.style.display = 'inline-block';
+			}
+
+			resolveButton.addEventListener('click', async function () {
+				try {
+					const response = await fetch(`/api/topics/${tid}/resolved`, {
+						method: 'PUT',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify({ resolved: true }),
+					});
+
+					if (response.ok) {
+						resolveButton.style.display = 'none';
+						unresolvedButton.style.display = 'inline-block';
+						console.log('Topic marked as resolved');
+					} else {
+						console.error('Failed to mark topic as resolved');
+					}
+				} catch (error) {
+					console.error('Error marking topic as resolved:', error);
+				}
+			});
+
+			unresolvedButton.addEventListener('click', async function () {
+				try {
+					const response = await fetch(`/api/topics/${tid}/resolved`, {
+						method: 'PUT',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify({ resolved: false }),
+					});
+
+					if (response.ok) {
+						unresolvedButton.style.display = 'none';
+						resolveButton.style.display = 'inline-block';
+						console.log('Topic marked as unresolved');
+					} else {
+						console.error('Failed to mark topic as unresolved');
+					}
+				} catch (error) {
+					console.error('Error marking topic as unresolved:', error);
+				}
+			});
+		}
+
 		hooks.fire('action:topic.loaded', ajaxify.data);
 	};
 
