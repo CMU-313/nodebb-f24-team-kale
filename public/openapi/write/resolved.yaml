@@ -19,6 +19,21 @@ put:
                   - type: object
                     properties:
                       mainPost: {}
+    '404':
+      description: topic not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                $ref: ../components/schemas/Status.yaml#/Status
+              response:
+                allOf:
+                  - $ref: ../components/schemas/TopicObject.yaml#/TopicObject
+                  - type: object
+                    properties:
+                      mainPost: {}
 delete:
   tags:
     - topics
@@ -27,6 +42,21 @@ delete:
   responses:
     '200':
       description: topic successfully marked as unresolved
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                $ref: ../components/schemas/Status.yaml#/Status
+              response:
+                allOf:
+                  - $ref: ../components/schemas/TopicObject.yaml#/TopicObject
+                  - type: object
+                    properties:
+                      mainPost: {}
+    '404':
+      description: topic not found
       content:
         application/json:
           schema:
