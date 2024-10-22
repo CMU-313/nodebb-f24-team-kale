@@ -48,6 +48,7 @@ Write.reload = async (params) => {
 
 	setupApiRoute(router, 'get', '/api/v3/ping', writeControllers.utilities.ping.get);
 	setupApiRoute(router, 'post', '/api/v3/ping', writeControllers.utilities.ping.post);
+
 	/**
 	 * Plugins can add routes to the Write API by attaching a listener to the
 	 * below hook. The hooks added to the passed-in router will be mounted to
