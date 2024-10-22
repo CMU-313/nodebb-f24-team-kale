@@ -1,0 +1,42 @@
+put:
+  tags:
+    - topics
+  summary: mark topic resolved
+  description: This route responds with a simple `200 OK` if the Write API is enabled. Since there is no way of disabling the Write API, this will always return a success. However, it is also a good way to ensure the instance you are calling supports v3 of the Write API.
+  responses:
+    '200':
+      description: topic successfully marked as resolved
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                $ref: ../components/schemas/Status.yaml#/Status
+              response:
+                allOf:
+                  - $ref: ../components/schemas/TopicObject.yaml#/TopicObject
+                  - type: object
+                    properties:
+                      mainPost: {}
+delete:
+  tags:
+    - topics
+  summary: mark topic unresolved
+  description: This route responds with a simple `200 OK` if the Write API is enabled. Since there is no way of disabling the Write API, this will always return a success. However, it is also a good way to ensure the instance you are calling supports v3 of the Write API.
+  responses:
+    '200':
+      description: topic successfully marked as unresolved
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                $ref: ../components/schemas/Status.yaml#/Status
+              response:
+                allOf:
+                  - $ref: ../components/schemas/TopicObject.yaml#/TopicObject
+                  - type: object
+                    properties:
+                      mainPost: {}
