@@ -3,9 +3,17 @@ put:
     - topics
   summary: mark topic resolved
   description: This route responds with a simple `200 OK` if the Write API is enabled. Since there is no way of disabling the Write API, this will always return a success. However, it is also a good way to ensure the instance you are calling supports v3 of the Write API.
+  parameters:
+    - in: path
+      name: tid
+      schema:
+        type: string
+      required: true
+      description: a valid topic id
+      example: 1
   responses:
     '200':
-      description: topic successfully marked as resolved
+      description: Topic successfully marked resolved.
       content:
         application/json:
           schema:
@@ -14,34 +22,24 @@ put:
               status:
                 $ref: ../components/schemas/Status.yaml#/Status
               response:
-                allOf:
-                  - $ref: ../components/schemas/TopicObject.yaml#/TopicObject
-                  - type: object
-                    properties:
-                      mainPost: {}
-    '404':
-      description: topic not found
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              status:
-                $ref: ../components/schemas/Status.yaml#/Status
-              response:
-                allOf:
-                  - $ref: ../components/schemas/TopicObject.yaml#/TopicObject
-                  - type: object
-                    properties:
-                      mainPost: {}
+                type: object
+                properties: {}
 delete:
   tags:
     - topics
   summary: mark topic unresolved
   description: This route responds with a simple `200 OK` if the Write API is enabled. Since there is no way of disabling the Write API, this will always return a success. However, it is also a good way to ensure the instance you are calling supports v3 of the Write API.
+  parameters:
+    - in: path
+      name: tid
+      schema:
+        type: string
+      required: true
+      description: a valid topic id
+      example: 1
   responses:
     '200':
-      description: topic successfully marked as unresolved
+      description: Topic successfully marked unresolved.
       content:
         application/json:
           schema:
@@ -50,23 +48,5 @@ delete:
               status:
                 $ref: ../components/schemas/Status.yaml#/Status
               response:
-                allOf:
-                  - $ref: ../components/schemas/TopicObject.yaml#/TopicObject
-                  - type: object
-                    properties:
-                      mainPost: {}
-    '404':
-      description: topic not found
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              status:
-                $ref: ../components/schemas/Status.yaml#/Status
-              response:
-                allOf:
-                  - $ref: ../components/schemas/TopicObject.yaml#/TopicObject
-                  - type: object
-                    properties:
-                      mainPost: {}
+                type: object
+                properties: {}
