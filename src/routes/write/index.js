@@ -48,8 +48,8 @@ Write.reload = async (params) => {
 
 	setupApiRoute(router, 'get', '/api/v3/ping', writeControllers.utilities.ping.get);
 	setupApiRoute(router, 'post', '/api/v3/ping', writeControllers.utilities.ping.post);
-	setupApiRoute(router, 'put', '/api/v3/topics/:tid/resolved', writeControllers.topics.markResolved);
-	setupApiRoute(router, 'delete', '/api/v3/topics/:tid/resolved', writeControllers.topics.markUnresolved);
+	//setupApiRoute(router, 'put', '/api/v3/topics/:tid/resolved', writeControllers.topics.markResolved);
+	//setupApiRoute(router, 'delete', '/api/v3/topics/:tid/resolved', writeControllers.topics.markUnresolved);
 
 	/**
 	 * Plugins can add routes to the Write API by attaching a listener to the
