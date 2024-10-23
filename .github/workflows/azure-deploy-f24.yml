@@ -43,6 +43,14 @@ jobs:
             "redis:host": "${{ secrets.REDIS_HOST }}",
             "redis:port": "6379",
             "redis:password": "${{ secrets.REDIS_PASSWORD }}" }'
+
+      - name: Clone frontend repo
+        run: |
+          git clone https://github.com/CMU-313/nodebb-frontend-f24-team-kale.git
+
+      - name: Install frontend repo as a dependency for the backend repo
+        run: |
+          npm install ../nodebb-frontend-f24-team-kale
           
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
