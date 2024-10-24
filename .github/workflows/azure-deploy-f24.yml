@@ -50,7 +50,7 @@ jobs:
 
       - name: Install frontend repo as a dependency for the backend repo
         run: |
-          npm install ../nodebb-frontend-f24-team-kale
+          npm install ./nodebb-frontend-f24-team-kale
           
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
