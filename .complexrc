@@ -1,5 +1,5 @@
 {
-    "output": "/Complexity/complexity-report.md",
+    "output": "/complexity-report.md",
     "format": "markdown",
     "allfiles": false,
     "ignoreerrors": true,
