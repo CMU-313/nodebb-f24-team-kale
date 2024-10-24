@@ -1,6 +1,6 @@
 {
     "output": "/complexity-report.md",
-    "format": "markdown",
+    "format": "html",
     "allfiles": false,
     "ignoreerrors": true,
     "filepattern": "\\.js$",
