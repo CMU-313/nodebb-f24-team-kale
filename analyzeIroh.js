@@ -10,8 +10,8 @@ const stage = new Iroh.Stage(code);
 const varListener = stage.addListener(Iroh.VAR);
 
 varListener.on('after', (e) => {
-    const output = `Variable assigned: ${e.name} = ${e.value}\n`;
-    fs.appendFileSync('iroh-output.txt', output);
+	const output = `Variable assigned: ${e.name} = ${e.value}\n`;
+	fs.appendFileSync('iroh-output.txt', output);
 });
 
 eval(stage.script);
