@@ -1,0 +1,37 @@
+name: Run security check with retire.js
+
+on:
+  push:
+    branches:
+      - f24  # Adjust the branch as needed
+  pull_request:
+    branches:
+      - f24
+  workflow_call:
+
+jobs:
+  retirejs-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.17.0'  # Use the Node.js version your project requires
+
+      - name: Install Retire.js
+        run: npm install -g retire
+
+      - name: Run Retire.js vulnerability scan
+        run: retire
+
+      - name: Upload Retire.js Report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: retirejs-report
+          path: retirejs-report.json
+          
