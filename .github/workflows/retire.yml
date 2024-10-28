@@ -3,7 +3,7 @@ name: Run security check with retire.js
 on:
   push:
     branches:
-      - f24  # Adjust the branch as needed
+      - f24
   pull_request:
     branches:
       - f24
@@ -20,7 +20,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20.17.0'  # Use the Node.js version your project requires
+          node-version: '20.17.0'
 
       - name: Install Retire.js
         run: npm install -g retire
@@ -34,4 +34,3 @@ jobs:
         with:
           name: retirejs-report
           path: retirejs-report.json
-          
