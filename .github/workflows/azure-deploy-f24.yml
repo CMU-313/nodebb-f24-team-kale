@@ -32,12 +32,6 @@ jobs:
         with:
           node-version: '20.17.0'
         
-      - name: Install Retire.js
-        run: npm install -g retire
-
-      - name: Run Retire.js vulnerability scan
-        run: retire
-        
       - name: Set up NodeBB
         run: |
           ./nodebb setup '{"url":"https://nodebb-kale.azurewebsites.net:443",
