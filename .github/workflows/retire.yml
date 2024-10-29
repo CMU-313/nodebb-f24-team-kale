@@ -27,10 +27,3 @@ jobs:
 
       - name: Run Retire.js vulnerability scan
         run: retire
-
-      - name: Upload Retire.js Report
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: retirejs-report
-          path: retirejs-report.json
