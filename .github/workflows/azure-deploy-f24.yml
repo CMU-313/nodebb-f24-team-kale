@@ -31,7 +31,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20.17.0'
-        
+
       - name: Set up NodeBB
         run: |
           ./nodebb setup '{"url":"https://nodebb-kale.azurewebsites.net:443",
@@ -43,10 +43,6 @@ jobs:
             "redis:host": "${{ secrets.REDIS_HOST }}",
             "redis:port": "6379",
             "redis:password": "${{ secrets.REDIS_PASSWORD }}" }'
-
-      - name: Install frontend repo as a dependency for the backend repo
-        run: |
-          npm install https://github.com/CMU-313/nodebb-frontend-f24-team-kale.git
           
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
@@ -54,5 +50,5 @@ jobs:
         with:
           app-name: 'nodebb-kale'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E64DC192227C43C39A12BFA26DDDAFD2 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_927CB224401F49279DFD0FD92DFFE366 }}
           package: .
