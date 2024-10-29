@@ -1,3 +1,5 @@
+# workflow for retire.js tool integration
+
 name: Run security check with retire.js
 
 on:
