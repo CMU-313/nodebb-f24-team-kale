@@ -47,6 +47,10 @@ jobs:
       - name: Install frontend repo as a dependency for the backend repo
         run: |
           npm install https://github.com/CMU-313/nodebb-frontend-f24-team-kale.git
+
+      - name: Build with frontend repo dependency
+        run: |
+          ./nodebb build
           
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
