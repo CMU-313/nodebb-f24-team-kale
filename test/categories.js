@@ -158,7 +158,6 @@ describe('Categories', () => {
 			moveTid = topic.topicData.tid;
 			await Topics.reply({ uid: posterUid, content: 'test post', tid: moveTid });
 		});
-
 		it('should move posts from one category to another', (done) => {
 			Categories.moveRecentReplies(moveTid, categoryObj.cid, moveCid, (err) => {
 				assert.ifError(err);
